@@ -1,0 +1,45 @@
+{
+    "model_name": "Logistic Regression (Baseline + SMOTE)",
+    "pr_auc": 0.7088346085423827,
+    "average_precision": 0.6714349230477037,
+    "precision": 0.05389610389610389,
+    "recall": 0.8736842105263158,
+    "f1_score": 0.10152905198776759,
+    "confusion_matrix": [
+        [
+            55194,
+            1457
+        ],
+        [
+            12,
+            83
+        ]
+    ],
+    "classification_report": {
+        "0": {
+            "precision": 0.9997826323225736,
+            "recall": 0.9742811247815573,
+            "f1-score": 0.986867160749886,
+            "support": 56651.0
+        },
+        "1": {
+            "precision": 0.05389610389610389,
+            "recall": 0.8736842105263158,
+            "f1-score": 0.10152905198776759,
+            "support": 95.0
+        },
+        "accuracy": 0.9741127127903288,
+        "macro avg": {
+            "precision": 0.5268393681093387,
+            "recall": 0.9239826676539366,
+            "f1-score": 0.5441981063688268,
+            "support": 56746.0
+        },
+        "weighted avg": {
+            "precision": 0.9981990983254545,
+            "recall": 0.9741127127903288,
+            "f1-score": 0.9853849924854726,
+            "support": 56746.0
+        }
+    }
+}

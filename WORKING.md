@@ -45,6 +45,27 @@ Fraud Detection System/
 └── WORKING.md                   # This file
 ```
 
+## Phase 2 — Imbalance Handling + Baseline Model (COMPLETED)
+**Goal**: Address class imbalance and establish a performance baseline.
+
+### Implementation Details
+- **Imbalance Handling**: Applied **SMOTE** (Synthetic Minority Over-sampling Technique) to the training set only, balancing the classes to a 50/50 ratio.
+- **Baseline Model**: Trained a **Logistic Regression** model using `scikit-learn`.
+- **Evaluation**: Prioritized **PR-AUC** (Precision-Recall Area Under Curve) over accuracy due to extreme class imbalance (99.8% legit).
+- **Deliverables**: 
+    - Confusion Matrix, Precision, Recall, and F1-score computed on the raw (unbalanced) test set.
+    - Metrics saved to `reports/metrics_baseline.json`.
+    - Model artifact saved to `backend/models/baseline_lr.pkl`.
+
+### Baseline Metrics
+- **PR-AUC**: 0.7088
+- **Recall**: 87.37% (Caught 83 out of 95 fraud cases)
+- **Precision**: 5.39% (High false positive rate, expected for a simple baseline with SMOTE)
+- **F1-Score**: 0.1015
+
+### Key Takeaway
+The baseline model shows high recall (87%), which is crucial for fraud detection, but the low precision (5.39%) indicates a need for more sophisticated models (e.g., Random Forest, XGBoost) in Phase 3 to reduce false positives while maintaining or improving fraud detection rates.
+
 ---
-**Last Updated**: April 2026
-**Current Status**: Phase 1 Complete. Ready for Phase 2 (Model Training).
+**Last Updated**: April 21, 2026
+**Current Status**: Phase 2 Complete. Ready for Phase 3 (Advanced Modeling).
