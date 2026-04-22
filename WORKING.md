@@ -66,6 +66,31 @@ Fraud Detection System/
 ### Key Takeaway
 The baseline model shows high recall (87%), which is crucial for fraud detection, but the low precision (5.39%) indicates a need for more sophisticated models (e.g., Random Forest, XGBoost) in Phase 3 to reduce false positives while maintaining or improving fraud detection rates.
 
+## Phase 3 — Two models, one winner (COMPLETED)
+**Goal**: Implement unsupervised and deep learning anomaly detection models to catch fraud without labels.
+
+### Implementation Details
+- **Isolation Forest**:
+    - Unsupervised approach, ideal for production where fraud labels are delayed.
+    - Configured with `contamination=0.002` (matching the dataset fraud rate).
+    - **PR-AUC**: 0.1091
+- **Autoencoder**:
+    - Deep learning approach using Keras.
+    - Trained exclusively on **legitimate transactions** to learn the "normal" pattern.
+    - **Architecture**: 14-dim bottleneck relu layer, sigmoid output, MSE loss.
+    - **Anomaly Detection**: Reconstruction error (MSE) used as a natural anomaly score.
+    - **PR-AUC**: 0.3424 (The Winner)
+- **Deliverables**:
+    - Precision-Recall curve comparison plot saved to `reports/phase3_pr_curve.png`.
+    - Metrics saved to `reports/metrics_phase3.json`.
+    - Autoencoder model saved to `backend/models/autoencoder_model.h5`.
+
+### Key Insights
+- **The Winner**: The **Autoencoder** significantly outperformed the Isolation Forest (0.34 PR-AUC vs 0.11). It's more effective at capturing the complex, non-linear relationships in transaction data.
+- **Natural Scoring**: Using reconstruction error provides a clear, interpretable score for "how unusual" a transaction is, which is highly valuable for risk teams.
+
 ---
-**Last Updated**: April 21, 2026
-**Current Status**: Phase 2 Complete. Ready for Phase 3 (Advanced Modeling).
+**Last Updated**: April 22, 2026
+**Current Status**: Phase 3 Complete. The Autoencoder is the primary anomaly detection engine.
+
+

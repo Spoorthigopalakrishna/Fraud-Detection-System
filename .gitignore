@@ -18,6 +18,8 @@ build/
 data/
 *.csv
 *.pkl
+*.h5
+*.keras
 *.sqlite3
 
 # Visualization artifacts

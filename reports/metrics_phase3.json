@@ -1,0 +1,8 @@
+{
+    "isolation_forest": {
+        "pr_auc": 0.10906319297596266
+    },
+    "autoencoder": {
+        "pr_auc": 0.3423858859230811
+    }
+}

@@ -8,3 +8,4 @@ joblib
 xgboost
 shap
 imbalanced-learn
+tensorflow
