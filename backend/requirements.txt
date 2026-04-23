@@ -9,3 +9,6 @@ xgboost
 shap
 imbalanced-learn
 tensorflow
+streamlit
+marshmallow
+flask-cors

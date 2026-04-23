@@ -90,7 +90,25 @@ The baseline model shows high recall (87%), which is crucial for fraud detection
 - **Natural Scoring**: Using reconstruction error provides a clear, interpretable score for "how unusual" a transaction is, which is highly valuable for risk teams.
 
 ---
-**Last Updated**: April 22, 2026
-**Current Status**: Phase 3 Complete. The Autoencoder is the primary anomaly detection engine.
+## Phase 4 — Flask REST API (COMPLETED)
+**Goal**: Build a production-ready REST API to serve predictions and model metrics.
+
+### Implementation Details
+- **Framework**: Flask with CORS enabled for frontend integration.
+- **Input Validation**: Integrated **Marshmallow** for strict transaction JSON validation (scaled_amount, scaled_time, V1-V28).
+- **Endpoints**:
+    - `POST /predict`: Receives transaction data, returns fraud verdict and probability score.
+    - `GET /metrics`: Returns model accuracy, precision, recall, and the threshold used.
+    - `GET /health`: Basic health check for monitoring.
+- **Optimization**: The model (`baseline_lr.pkl`) and metrics are loaded once at startup to ensure low-latency responses.
+
+### Key Features
+- **Strict Validation**: Returns 422 Unprocessable Entity if input features are missing or malformed.
+- **CORS Support**: Ready to be consumed by the React dashboard in Phase 5.
+- **Clean Structure**: Separated validation schemas from route logic for maintainability.
+
+---
+**Last Updated**: April 23, 2026
+**Current Status**: Phase 4 Complete. API is live and ready for frontend connection.
 
 
