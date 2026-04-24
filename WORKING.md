@@ -24,7 +24,7 @@
 - **Class Imbalance**: The 0.17% fraud rate necessitates specialized techniques like SMOTE or cost-sensitive learning in Phase 2.
 
 ### File Structure Reference
-```
+```text
 Fraud Detection System/
 ├── backend/
 │   ├── src/
@@ -33,15 +33,14 @@ Fraud Detection System/
 │   │   ├── scripts/             # Data scripts (eda_processing.py, train.py)
 │   │   └── models/              # Saved model artifacts
 │   └── requirements.txt
-├── data/
-│   ├── raw/                     # Original CSVs
-│   └── processed/               # Cleaned/Scaled CSVs
 ├── frontend/
-│   ├── src/                     # React Components (.tsx)
-│   ├── package.json
-│   └── tsconfig.json            # TS Configuration
-├── reports/
-│   └── figures/                 # EDA Plots
+│   ├── data/                    # Datasets (raw & processed)
+│   ├── reports/                 # EDA Plots & Metrics
+│   ├── src/                     # React Application (.js)
+│   │   ├── components/          # UI Components
+│   │   ├── services/            # API Integration
+│   │   └── styles/              # Global CSS & Tailwind
+│   └── package.json             # Frontend dependencies
 └── WORKING.md                   # This file
 ```
 
@@ -108,7 +107,26 @@ The baseline model shows high recall (87%), which is crucial for fraud detection
 - **Clean Structure**: Separated validation schemas from route logic for maintainability.
 
 ---
-**Last Updated**: April 23, 2026
-**Current Status**: Phase 4 Complete. API is live and ready for frontend connection.
+---
+## Phase 5 — React frontend (COMPLETED)
+**Goal**: Build a dynamic, real-time dashboard to interface with the Fraud Detection API.
 
+### Implementation Details
+- **Framework & Styling**: Initialized with React and integrated Tailwind CSS v3 for a premium, responsive glassmorphism UI.
+- **Component Architecture**:
+    - `TransactionForm`: Includes customized range sliders for PCA features (V1-V5) to dynamically test transactions.
+    - `ResultCard`: Provides immediate, color-coded visual feedback (Legitimate/Fraudulent) with an animated anomaly score bar.
+    - `LiveFeed`: Displays a rolling table of the last 10 transactions and their statuses.
+    - `Dashboard`: Uses `recharts` for a live Donut Chart tracking the fraud-to-legit ratio and a Line Chart tracking historical anomaly scores.
+- **Integration**:
+    - Centralized `axios` logic into `src/services/api.js` to securely push `POST` requests to `http://localhost:5000/predict`.
+- **Refactoring**: Professionally reorganized the `frontend/` directory structure, removed unused boilerplate, and moved the `data/` and `reports/` folders inside it per request.
 
+### Key Features
+- Dynamic layout updating instantly via React state tracking (`stats`, `history`, `transactions`).
+- Robust error handling for Flask server connection drops.
+- Aesthetic details including CSS keyframe animations and transparent gradient visuals.
+
+---
+**Last Updated**: April 24, 2026
+**Current Status**: Phase 5 Complete. The full-stack pipeline (React Dashboard + Flask API) is successfully integrated and operational.
